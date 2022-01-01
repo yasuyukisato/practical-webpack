@@ -1,7 +1,7 @@
 {
   "name": "practical-webpack",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
   },
   "devDependencies": {
     "webpack": "^4.43.0",
