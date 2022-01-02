@@ -56,4 +56,10 @@ module.exports = merge(commonConfig, {
   devtool: "cheap-module-eval-source-map",
 });
 ```
+ 
+- webpack-dev-serverをインストール
+```
+npm install -D webpack-dev-server@3.11.0
+```
+
 
