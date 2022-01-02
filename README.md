@@ -24,4 +24,19 @@ npm install --save-dev webpack@4.43.0 webpack-cli@3.3.11
  - 実行ファイルに必要なモジュールであることを示している
  - 出力されるファイルにバンドルされる
  - 開発時に使うパッケージのみ入れる
- - -Dで省略可
+ - -Dで省略可 
+
+開発環境と本番環境で設定ファイルを分ける場合はmergeプラグインが必要 
+```
+npm install -D webpack-merge@5.0.9
+```
+ 
+スクリプトに開発/本番環境に分けてコマンドを登録 
+```
+  "scripts": {
+    "dev": "webpack --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
+```
+--configで利用する設定ファイルを指定できる 
+productionでビルドすると圧縮ファイルが生成される
+
