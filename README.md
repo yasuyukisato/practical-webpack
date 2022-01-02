@@ -44,4 +44,16 @@ productionでビルドすると圧縮ファイルが生成される
 ```
 npm info webpack@4.43.0
 ```
+ 
+- ソースマップ
+bundle後のファイルと元のファイルを関連付けるファイルであり、bundle前のコードを確認できるようになるため、デバックがしやすくなる 
+基本的に開発環境で使用する 
+```
+module.exports = merge(commonConfig, {
+  mode: "development",
+  watch: true,
+  // ソースマップを生成
+  devtool: "cheap-module-eval-source-map",
+});
+```
 
