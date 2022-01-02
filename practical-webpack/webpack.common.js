@@ -1,4 +1,5 @@
 const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   // entryポイントを指定
@@ -12,4 +13,13 @@ module.exports = {
     // ファイルの指定をする/publicのjsディレクトリにファイルが出力される
     filename: "bundle.js",
   },
+  // プラグインを指定する設定
+  plugins: [
+    // CleanWebpackPluginはアウトプットのパスに指定した出力先をクリーンアップ(削除)するため、今回は *publicディレクトリ* がクリーンアップされる
+    new CleanWebpackPlugin({
+      // 削除パターンを指定できるオプション(index.htmlはwebpackで出力されているものではないため除外する)
+      // 下記のように記述するとhtml以外の全てのディレクトリ、ファイルが対象となる
+      cleanOnceBeforeBuildPatterns: ["**/*", "!**.html"],
+    }),
+  ],
 };
