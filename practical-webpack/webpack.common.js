@@ -1,9 +1,6 @@
 const path = require("path");
 
 module.exports = {
-  // モードを指定
-  // develepmentとproductionのモードがある
-  mode: "development",
   // entryポイントを指定
   entry: "./src/js/app.js",
   // 出力先の設定（絶対パスを指定する必要がある）
