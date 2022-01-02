@@ -38,5 +38,10 @@ npm install -D webpack-merge@5.0.9
     "build": "webpack --config webpack.prod.js"
 ```
 --configで利用する設定ファイルを指定できる 
-productionでビルドすると圧縮ファイルが生成される
+productionでビルドすると圧縮ファイルが生成される 
+ 
+今回使用しているwebpackの依存関係にあるパッケージの情報をみたい場合
+```
+npm info webpack@4.43.0
+```
 
