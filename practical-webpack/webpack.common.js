@@ -49,6 +49,18 @@ module.exports = {
       },
     },
   },
+  // ローダーの設定を記述
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        // ローダーの処理対象から除外したいものを記述
+        exclude: /node_modules/,
+        // 利用するローダーを記述
+        loader: "babel-loader",
+      },
+    ],
+  },
   // プラグインを指定する設定
   plugins: [
     // CleanWebpackPluginはアウトプットのパスに指定した出力先をクリーンアップ(削除)するため、今回は *publicディレクトリ* がクリーンアップされる

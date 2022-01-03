@@ -10,6 +10,8 @@ console.log("app");
 
 const result = add(2, 4);
 
+console.log("app");
+
 $("body")
   .append(result)
   .append(`<p>${greet("App")}</p>`);
