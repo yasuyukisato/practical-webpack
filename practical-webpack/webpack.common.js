@@ -14,11 +14,12 @@ module.exports = {
     // __dirname には、現在実行中のソースコードが格納されているディレクトリパスが格納されている
     // ~/Hoge/foo.js/c/c.js 上で __dirname を取得すると ~/Hoge/foo.js/c になる
     path: path.resolve(__dirname, "public/js"),
-    // 複数のファイルを出力するため[name]をつけてplaceholderとして使用
-    // entryポイントの名前であるappとanotherが[name]に入る
-    filename: "[name].bundle.js",
-    // エントリーポイント以外から出力するファイル名を指定できる
-    chunkFilename: "js/[name].js",
+
+    // ブラウザキャッシュ対策として.[contenthash]を記述
+    // 出力されるファイルごとに固有でハッシュが付与される
+    // jsファイルを更新すると自動でハッシュが更新される
+    filename: "[name].[contenthash].bundle.js",
+    chunkFilename: "js/[name].[contenthash].js",
   },
   optimization: {
     splitChunks: {
