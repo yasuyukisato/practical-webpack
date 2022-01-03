@@ -22,11 +22,30 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      // 分割の対象を記入 initialを指定すると静的にimportしているモジュールが対象
-      // デフォルトでnode_modules以下のモジュールが対象のためjqueryとvelocityが指定される
-      chunks: "initial",
-      // 分割して出力するファイルの名前
-      name: "vendor",
+      // 分割したファイルを出力する設定を記述
+      cacheGroups: {
+        vendor: {
+          chunks: "initial",
+          // 分割の対象を指定
+          // 今回対象のjqueryとvelocityはnode_modules以下にあるため以下のように記述
+          test: /node_modules/,
+          // 出力するファイル名
+          name: "vendor",
+        },
+        // プロパティ名は任意
+        vendorModules: {
+          chunks: "initial",
+          // src/js/modulesを指定
+          // [\\/]は/の意味　windowsで動作しなくなるためそのように記述
+          test: /src[\\/]js[\\/]modules/,
+          name: "vendor-modules",
+          // 分割の対象となるモジュールの最小サイズを記述/デフォルトだと30KBでgreet.jsは分割の対象にならないため0をかく
+          minSize: 0,
+          // モジュールがいくつの場所で利用されていれば分割の対象にするのかを指定
+          // greet.jsはapp.js/another.jsの２つでimport、利用されているため分割の対象となるが、math.jsは１箇所でしか利用されていないため分割の対象にならないため、対象から外している
+          minChunks: 2,
+        },
+      },
     },
   },
   // プラグインを指定する設定
