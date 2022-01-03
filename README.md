@@ -72,6 +72,39 @@ splitChunksPluginを利用する
 ```
 npm install -D babel-loader@8.1.0 @babel/core@7.10.5 @babel/preset-env@7.10.4
 ```
+ローダーを複数指定したい場合は、以下のようにuse内に利用したいローダーを記述
+```
+module: {
+  rules: [
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: ['babel-loader', 'awesome-loader'],
+    },
+  ],
+},
+```
+
+複数指定しているローダーにオプションを指定したい場合は、以下のように記述 
+```
+module: {
+  rules: [
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: [
+        {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+        'awesome-loader',
+      ],
+    },
+  ],
+},
+```
 
 
 
