@@ -67,6 +67,11 @@ npm install -D webpack-dev-server@3.11.0
 ブラウザキャッシュを活用できているかどうか 
  - 更新頻度の低いファイルと更新頻度の高いファイルを一緒にしない（一緒にすると更新頻度の低いファイルまで、サーバーが新しくデータを取得しに行く可能性があるためキャッシュをうまく活用できていない）
 splitChunksPluginを利用する 
+ 
+- Babelを使ってトランスパイルを行う
+```
+npm install -D babel-loader@8.1.0 @babel/core@7.10.5 @babel/preset-env@7.10.4
+```
 
 
 
