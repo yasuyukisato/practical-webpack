@@ -8,23 +8,27 @@ npm init -y
 npm install --save jquery@5.5.1 velocity-animate@1.5.2 
 npm install --save-dev webpack@4.43.0 webpack-cli@3.3.11
 ```
+- ビルドとは 
+```
+実行ファイルを生成すること
+```
 
-- --save: dependencies に追記される。(※npm5より--saveがデフォルトで組み込まれている)
-- --save-dev: devDependencies に追記される。
- 
- 
+- --save: dependencies に追記される。(※npm5より--saveがデフォルトで組み込まれている) 
+```
 - dependencies
- - 開発時に必要なモジュールであることを示している
- - ファイルを出力するために使う
- - そのパッケージを動かすために必要な他のパッケージリスト 
- - パッケージやプロジェクトの実行時に必要になるものを入れる 
-  
-  
-- devDependencies
  - 実行ファイルに必要なモジュールであることを示している
  - 出力されるファイルにバンドルされる
+ - パッケージやプロジェクトの実行時に必要になるものを入れる 
+```
+
+- --save-dev: devDependencies に追記される。 
+```
+- devDependencies
+ - 開発時に必要なモジュールであることを示している
  - 開発時に使うパッケージのみ入れる
+ - 本番用のビルドをするときに含まれない
  - -Dで省略可 
+ ```
 
 開発環境と本番環境で設定ファイルを分ける場合はmergeプラグインが必要 
 ```
@@ -105,7 +109,11 @@ module: {
   ],
 },
 ```
-
-
-
-
+ 
+- トランスパイル 
+```
+npm install -D babel-loader@8.1.0 @babel/core@7.10.5 @babel/preset-env@7.10.4
+```
+.browserslistrcを作成する 
+異なるツール間で共通利用できる設定ファイル（複数のツールで共通利用ができる）
+bebelはこのファイルを利用できるので、対象ブラウザを記述すれば、そのブラウザで動作するコードに変換してくれる
