@@ -116,4 +116,30 @@ npm install -D babel-loader@8.1.0 @babel/core@7.10.5 @babel/preset-env@7.10.4
 ```
 .browserslistrcを作成する 
 異なるツール間で共通利用できる設定ファイル（複数のツールで共通利用ができる）
-bebelはこのファイルを利用できるので、対象ブラウザを記述すれば、そのブラウザで動作するコードに変換してくれる
+bebelはこのファイルを利用できるので、対象ブラウザを記述すれば、そのブラウザで動作するコードに変換してくれる 
+ 
+- ポリフィル
+polyfillはES5に存在しない関数やライブラリの代替コードのこと 
+```
+npm install --save core-js@3.6.5 regenerator-runtime@0.13.7
+```
+ポリフィルのほとんどの構文はcore-jsに入っており、asyncやawitの構文を利用するためにはregenerator-runtimeが必要 
+importで取り込むと無駄にファイルを大きくしてしまうため、babelの設定から記述する 
+```
+module.exports = {
+  // 利用するプリセットを指定
+  presets: [
+    [
+      "@babel/preset-env",
+      {
+        // 必要なポリフィルのみを取り組む
+        useBuiltIns: "usage",
+        // 指定しないとバージョン２が指定され、エラーや警告がでる
+        corejs: 3,
+        // 取り込まれたポリフィルの情報が出力される
+        // debug: true,
+      },
+    ],
+  ],
+};
+```
